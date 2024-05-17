@@ -1,0 +1,10 @@
+
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/plateform
+        username: plateform
+        password: plateform
+#        url: jdbc:postgresql://localhost:5432/game
+#        username: plateforme
+#        password: Isen14

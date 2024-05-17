@@ -1,0 +1,13 @@
+rule "Case vide"
+    when
+        //$case: Case(pathImg == "empty")
+    then
+        //$case.setStatusCase("vide");
+end
+
+rule "Case occupée"
+    when
+        //$case: Case(pathImg != null)
+    then
+        //$case.setSuggestedCase("occupée");
+end

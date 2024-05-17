@@ -1,0 +1,47 @@
+/*import fr.isencaen.Gameplatform.models.dto.CellInfoDto
+global Grille grille;
+
+dialect "mvel"
+
+rule "Ligne gagnante"
+    when
+        $ligne: Map(size == 3) from grille.cases
+        $cases: List(size == 3) from $ligne.values
+        eval(all( $cases, c: Case(c.idUser == $idUser) ))
+    then
+        // Déterminer le statut de la ligne
+        for (CellInfoDto case : $cases) {
+            case.setStatusCase("gagnant");
+        }
+end
+
+rule "Colonne gagnante"
+    when
+        $colonnes: List(size == 3) from grille.cases.values
+        eval(all( $colonnes, c: Case(c.idUser == $idUser) ))
+    then
+        // Déterminer le statut de la colonne
+        for (Case case : $colonnes) {
+            case.setStatusCase("gagnant");
+        }
+end
+
+rule "Diagonale gagnante"
+    when
+        $cases: List(size == 3) from grille.cases.values
+        eval(all( $cases, c: Case(c.idUser == $idUser) ))
+        (
+            $cases[0].getLigne().equals($cases[1].getLigne())
+            && $cases[1].getLigne().equals($cases[2].getLigne())
+        )
+        or
+        (
+            $cases[0].getColonne().equals($cases[1].getColonne())
+            && $cases[1].getColonne().equals($cases[2].getColonne())
+        )
+    then
+        // Déterminer le statut de la diagonale
+        for (Case case : $cases) {
+            case.setStatusCase("gagnant");
+        }
+end*/
