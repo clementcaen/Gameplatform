@@ -1,6 +1,19 @@
+logging:
+    level:
+        fr.isencaen.gameplatform: DEBUG
 spring:
     datasource:
-        driver-class-name: org.h2.Driver
-        password: password
-        url: 'jdbc:h2:mem:testdb'
-        username: sa
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/plateform
+        username: plateform
+        password: plateform
+#        url: jdbc:postgresql://localhost:5432/game
+#        username: plateforme
+#        password: Isen14
+#
+#spring:
+#    datasource:
+#        driver-class-name: org.h2.Driver
+#        password: password
+#        url: 'jdbc:h2:mem:testdb'
+#        username: sa

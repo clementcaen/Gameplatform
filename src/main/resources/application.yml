@@ -1,4 +1,6 @@
-
+logging:
+    level:
+      fr.isencaen.gameplatform: INFO
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver

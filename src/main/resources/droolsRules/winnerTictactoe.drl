@@ -1,4 +1,4 @@
-/*import fr.isencaen.Gameplatform.models.dto.CellInfoDto
+/*import fr.isencaen.gameplatform.models.dto.CellInfoDto
 global Grille grille;
 
 dialect "mvel"
