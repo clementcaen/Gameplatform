@@ -12,6 +12,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 @Component
@@ -66,6 +67,7 @@ public class JwtService {
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+6000000))
+                //.setExpiration(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(365)))//for tests users
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 

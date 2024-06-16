@@ -1,6 +1,5 @@
 package fr.isencaen.gameplatform.filter;
 
-import fr.isencaen.gameplatform.models.Account;
 import fr.isencaen.gameplatform.service.AccountService;
 import fr.isencaen.gameplatform.service.JwtService;
 import jakarta.servlet.FilterChain;

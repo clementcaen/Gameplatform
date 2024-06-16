@@ -41,9 +41,9 @@ public class SecuritySpringConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v1/account", "/v1/connexion", "/v1/accounts", "v1/account/refreshToken","/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/v1/savinggame/**").permitAll()
-                        .requestMatchers("/v1/games/**").authenticated())
+                        .requestMatchers("/v1/account", "/v1/connexion", "v1/account/refreshToken","/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/v1/savinggame/**").permitAll()//.hasRole("ADMIN")
+                        .requestMatchers("/v1/games/**", "/v1/accounts/currentgames").permitAll())//.authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

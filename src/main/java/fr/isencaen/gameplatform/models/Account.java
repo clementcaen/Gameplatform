@@ -3,6 +3,7 @@ package fr.isencaen.gameplatform.models;
 import fr.isencaen.gameplatform.models.dto.CreateAccountDto;
 import fr.isencaen.gameplatform.service.JwtService;
 import jakarta.persistence.*;
+import lombok.Setter;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,7 @@ public class Account implements UserDetails, java.io.Serializable {
     @Column(name="user_id")
     private int userId;
 
+    @Setter
     @Column(name="pseudo", unique = true)
     private String pseudo;
     @Column(name="mail", unique = true)
@@ -37,9 +39,6 @@ public class Account implements UserDetails, java.io.Serializable {
 
     public Account() {
     }
-
-//    private static final JwtService jwtService = new JwtService();
-
     public Account(String pseudo, String mail, String nom, String pwd, String section) {
         this.pseudo = pseudo;
         this.mail = mail;
@@ -54,23 +53,14 @@ public class Account implements UserDetails, java.io.Serializable {
     public Account(CreateAccountDto createAccountDto) {
         this(createAccountDto.pseudo(), createAccountDto.email(), createAccountDto.name(), createAccountDto.pwd(), createAccountDto.section());
     }
-    public static String creationToken(String pwd, String pseudo){//old version for creating token
-        return DigestUtils.sha256Hex(pwd+pseudo+"maximeestbienmieuxquuntoken");
-    }
+//    public static String creationToken(String pwd, String pseudo){//old version for creating token
+//        return DigestUtils.sha256Hex(pwd+pseudo+"maximeestbienmieuxquuntoken");
+//    }
     public static String hashPwd(String pwd){
         return DigestUtils.sha256Hex(pwd+"maximeLePlusBeau");
     }
-
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setSection(String section) {
-        this.section = section;
+    public void setUserId(int userId) {//only for tests
+        this.userId = userId;
     }
 
     public void setToken(String token) {
@@ -100,21 +90,6 @@ public class Account implements UserDetails, java.io.Serializable {
 
     public String getRole() {
         return this.role;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     public int getUserId() {
@@ -154,6 +129,10 @@ public class Account implements UserDetails, java.io.Serializable {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    public void setRoleAdmin() {//just for test
+        this.role = "ROLE_ADMIN";
     }
 }
 

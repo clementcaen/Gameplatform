@@ -20,9 +20,6 @@ public class AccountService implements UserDetailsService {
     private AccountRepository accountRepository;
 
 
-    public AccountDto getInfosAccount() throws NotImplementedException {
-        throw new NotImplementedException();
-    }
     public MyAccountDto createAccount(CreateAccountDto createAccountDto) throws AccountFunctionalException {
         if (accountRepository.existsByMail(createAccountDto.email())) {
             throw new AccountFunctionalException("Mail already used", "DUPLICATE_MAIL");
@@ -58,5 +55,10 @@ public class AccountService implements UserDetailsService {
 
     public Account loadUserByUsername(String pseudo) {
         return accountRepository.findByPseudo(pseudo);
+    }
+
+    public void newToken(Account account, String token) {
+        account.setToken(token);
+        accountRepository.save(account);
     }
 }

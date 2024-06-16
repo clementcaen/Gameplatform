@@ -36,7 +36,7 @@ public class GameService {
     public CurrentGameDto createGame(String gameName, String accountToken) throws GamesFunctionalException {
         //Vérifie que je jeu existe
         return this.gameRepository.findByName(gameName).stream().findFirst().map(game -> {
-                    //Récupération du joueur
+                    //Recuperation of the player
                     Account accountP1 = accountRepository.findByToken(accountToken);//récupère le compte du joueur
                     //Creation of the game
                     CurrentGame currentGame = new CurrentGame(game, new ArrayList<>());
@@ -46,7 +46,7 @@ public class GameService {
                     accountPosition = this.accountPlayerPositionRepository.save(accountPosition);
                     currentGame.getAccountPlayersPositions().add(accountPosition);
 
-                    CurrentGame currentGamecreated = currentGameRepository.save(currentGame);//créer le jeu dans la base de données
+                    CurrentGame currentGamecreated = currentGameRepository.save(currentGame);//create the game in the database
                     return getGameInfos(currentGamecreated);
                 })
                 .orElseThrow(() -> new GamesFunctionalException(GAME_NOT_FOUND_MESSAGE, GAME_NOT_FOUND));
@@ -86,9 +86,9 @@ public class GameService {
         return new CurrentGameDto(currentGamecreated.getIdCurrentGame(), accountspositionsdto);
     }
 
-    public List<MyGameInfoDto> getMyGames(String idUser) throws AccountFunctionalException {
-        Account account = accountRepository.findById(Integer.parseInt(idUser))
-                .orElseThrow( () -> new AccountFunctionalException("The player doesn't exist", "PLAYER_NOT_FOUND"));
+    public List<MyGameInfoDto> getMyGames(String userToken) throws AccountFunctionalException {
+        Account account = accountRepository.findByToken(userToken);
+                //.orElseThrow( () -> new AccountFunctionalException("The player doesn't exist", "PLAYER_NOT_FOUND"));
         return currentGameRepository.findByAccount(account)
                 .stream()
                 .map(MyGameInfoDto::of)

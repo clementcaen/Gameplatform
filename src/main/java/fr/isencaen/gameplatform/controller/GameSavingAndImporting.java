@@ -50,7 +50,7 @@ public class GameSavingAndImporting {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (IOException | ClassNotFoundException e) {
             log.error("Error while restoring game position", e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

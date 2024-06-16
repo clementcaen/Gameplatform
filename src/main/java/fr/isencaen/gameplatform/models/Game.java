@@ -17,6 +17,13 @@ public class Game implements java.io.Serializable{
     @Column(name="regles")
     private String rulesGame;
 
+    public Game() {
+    }
+
+    public Game(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -25,13 +32,6 @@ public class Game implements java.io.Serializable{
         return name;
     }
 
-    public String getPathImg() {
-        return pathImg;
-    }
-
-    public String getRulesGame() {
-        return rulesGame;
-    }
 }
 
 
