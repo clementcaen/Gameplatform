@@ -22,8 +22,6 @@ public class WhitelistedObjectInputStream extends ObjectInputStream {
         WHITELIST.add("fr.isencaen.gameplatform.models.Game");
         WHITELIST.add("fr.isencaen.gameplatform.models.PositionsObject");
         WHITELIST.add("java.util.ArrayList");
-//        WHITELIST.add("java.util.HashMap");
-//        WHITELIST.add("java.util.HashSet");
         WHITELIST.add("org.hibernate.collection.spi.PersistentBag");
         WHITELIST.add("org.hibernate.collection.spi.AbstractPersistentCollection");
         WHITELIST.add("java.lang.Integer");

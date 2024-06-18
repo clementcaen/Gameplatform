@@ -42,8 +42,8 @@ public class SecuritySpringConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/v1/account", "/v1/connexion", "v1/account/refreshToken","/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/v1/savinggame/**").permitAll()//.hasRole("ADMIN")
-                        .requestMatchers("/v1/games/**", "/v1/accounts/currentgames").permitAll())//.authenticated())
+                        .requestMatchers("/v1/savinggame/**").hasRole("ADMIN")//.permitAll()
+                        .requestMatchers("/v1/games/**", "/v1/accounts/currentgames").authenticated())//.permitAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
